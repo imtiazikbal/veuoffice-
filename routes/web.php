@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 
 // Admin midlreware
 
@@ -123,6 +123,11 @@ Route::get('/edit/news/{news}', [NewsController::class, 'edit']);
 Route::post('/update/news/{news}', [NewsController::class, 'update']);
 Route::delete('/destroy/news/{news}', [NewsController::class, 'destroy']);
 
+//site logo Update
+Route::get('/index/logo', [AdminController::class, 'indexLogo'])->name('indexLogo');
+Route::get('/create/logo', [AdminController::class, 'createLogo'])->name('createLogo');
+Route::post('/store/logo', [AdminController::class, 'storeLogo'])->name('storeLogo');
+});
 // lead news 
 Route::get('/featuredNews', [FontendController::class, 'featuredNews'])->name('featuredNews');
 
@@ -132,7 +137,7 @@ Route::get('/admin/get-news-by-category/{category_id}', [FontendController::clas
 
 
 // get news by title id
-Route::get('/news/get-news-by-title/{news_id}', [FontendController::class, 'getNewsByTitle'])->name('newsByTitle');
+Route::get('/news/{news}', [FontendController::class, 'getNewsByTitle'])->name('newsByTitle');
 
 
 

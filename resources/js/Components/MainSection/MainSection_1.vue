@@ -1,20 +1,20 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
-defineProps({
+ defineProps({
     news: Object
 })
 </script>
 <template>
             
                         <div class="col-md-12 col-12 d-flex justify-content-evenly ">
-                   <Link :href="`/news/get-news-by-title/${news.id}`" class="main_section1_image mr-3 d-block">
-                   <img :src="'/'+ news.image"  alt="" width="100%"> 
-                   <span class="d-block mt-3">{{ news.nCaption }}</span>
+                   <Link :href="route('newsByTitle', { news: news.id })" class="main_section1_image mr-3 d-block">
+                   <img :src="news.image"  alt="" width="100%"> 
+                   <span class="d-block mt-1">{{ news.nCaption }}</span>
                    </Link>
-                   <Link :href="`/news/get-news-by-title/${news.id}`" class="main_section1_content">
+                   <Link :href="route('newsByTitle', { news: news.id })" class="main_section1_content">
                     <h2> {{ news.title }}</h2> 
-                    <h3 v-html="news.nBody.substr(0, 100)"> </h3> 
-                    <span class="d-block"></span>
+                    <h3 class="mt-3" v-html="news.nBody.substr(0, 300)"> </h3> 
+                    <span class="d-block mt-3">{{ news.created_at }}</span>
                    </Link>
                 </div>                   
 </template>

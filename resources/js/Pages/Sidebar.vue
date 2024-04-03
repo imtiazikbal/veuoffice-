@@ -324,7 +324,7 @@ id="drawer-navigation"
   >
     <li>
       <a
-        href="#"
+        href="/index/logo"
         class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
       >
         <svg
@@ -341,7 +341,7 @@ id="drawer-navigation"
             clip-rule="evenodd"
           ></path>
         </svg>
-        <span class="ml-3">Docs</span>
+        <span class="ml-3">Site Logo</span>
       </a>
     </li>
     <li>

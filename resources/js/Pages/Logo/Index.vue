@@ -5,9 +5,6 @@ import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
 import Notification from '@/Components/Notification.vue';
 
-defineProps({
-
-})
 
 </script>
 
@@ -24,7 +21,7 @@ defineProps({
       <div class="col-12 col-lg-12 col-xl-8">
         <div class="card  border-light shadow-sm">
           <div class="card-body p-4">
-            <Link href="/create/featured" class="btn btn-primary">Add Feature</Link>
+            <Link href="/create/logo" class="btn btn-primary">Add Logo</Link>
             <div class="table-responsive">
               <table class="table table-borderless bsb-table-xl text-nowrap align-middle m-0">
                 <thead>
@@ -36,11 +33,14 @@ defineProps({
                 </thead>
                 <tbody>
                   <tr>
-                    <td></td>
+                    <td>
+                        logo
+                    </td>
                    
                     <td>
-                      <Link  :href="`/edit/featured/${featured.id}`" class="btn btn-primary mr-3">Edit</Link>
-                      <Link :href="`/destroy/featured/${featured.id}`" class="btn btn-primary">Delete</Link>
+                        logo
+                      <!-- <Link  :href="`/edit/featured/${featured.id}`" class="btn btn-primary mr-3">Edit</Link>
+                      <Link :href="`/destroy/featured/${featured.id}`" class="btn btn-primary">Delete</Link> -->
                     </td>
                   </tr>
                 </tbody>

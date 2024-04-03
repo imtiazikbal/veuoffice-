@@ -17,7 +17,11 @@ defineProps({
     category: Object,
     featured: Object,
     news: Object,
-    skip1Get2: Object
+    newsSkip1Take2: Object,
+    newsSkip1Take2: Object,
+    newsSkip3Take3: Object,
+    rajnitiCategoryNews: Object
+
 })
 </script>
 <template>
@@ -31,7 +35,7 @@ defineProps({
 <div class="container-fluid cbackgraund">
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center py-3">
-            <a href=""><img src="https://tpc.googlesyndication.com/simgad/17282694357066508670" alt=""></a>
+            <a href=""><img src="https://tpc.googlesyndication.com/simgad/1409315922313000973" alt=""></a>
         </div>
     </div>  
     
@@ -47,28 +51,27 @@ defineProps({
             <div class="col-md-3 cbr-1">
     <div class="row">
         </div>
-            <LeftSideBar_1/>
+            <LeftSideBar_1 :news = "rajnitiCategoryNews"/>
             <LeftSideBar_2/>
             <LeftSideBar_2/>
             <LeftSideBar_2/>
             <LeftSideBar_2/>       
          </div>    
-        <div class="col-md-6 cbr-1">
+        <div class="col-md-6 cbr-1 px-3">
                 <div class="row">
-                    <MainSection_1 :news = "news"/>0
+                    <MainSection_1 :news = "news"/>
                 </div>
-                <div class="row mb-3  cbt py-3">                    
-                    <MainSection_2 :mainnews2 = "skip1Get2"/>
+                <div class="row mb-3 d-flex justify-content-space-between bb cbt py-3">                    
+                    <MainSection_2 :newsSkip1Take2 = "newsSkip1Take2"/>
+                 
                 </div>
-                <div class="row pt-3 pb-3">
-                    <MainSection_3/>  
-                    <MainSection_3/>  
-                    <MainSection_3/>  
+                <div class="row pt-3 pb-3 bb">
+                    <MainSection_3 :newsSkip3Take3 = "newsSkip3Take3"/>  
+  
                 </div>
                 <div class="row pt-3">
-                    <MainSection_4/>
-                    <MainSection_4/>
-                    <MainSection_4/>
+                    <MainSection_3 :newsSkip3Take3 = "newsSkip3Take3"/>  
+
                 </div>
             </div>
             <div class="col-md-3">
@@ -81,7 +84,7 @@ defineProps({
             </div>           
         </div>
     </div>
-    <div class="container-fluid adsBg">
+    <div class="container-fluid adsBg my-5">
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 col-12 col-xl-12">
                 <div class="container">
@@ -440,10 +443,13 @@ defineProps({
 </template>
 
 <style>
-
-@import url('https://fonts.maateen.me/solaiman-lipi/font.css');
+    @import url('https://fonts.maateen.me/solaiman-lipi/font.css');
+.container {
+    max-width: 1280;
+}
 a,h1,h2,h3,h4,h5,h6,p,span{
-    font-family: 'SolaimanLipi', sans-serif !important;
+    font-family: 'SolaimanLipi', sans-serif;
+
     padding: 0;
     margin: 0;
     text-decoration: none;
@@ -453,9 +459,6 @@ a,h1,h2,h3,h4,h5,h6,p,span{
         text-decoration: none;
         padding: 0 px;
         max-width: 0 px ;
-    }
-    img{
-        width: 100%;
     }
 .cbr-1 {
 	border-right: 2px solid #c4c4c4;
@@ -537,12 +540,8 @@ a,h1,h2,h3,h4,h5,h6,p,span{
     border:none;
 }
 
-
-
-@import url('https://fonts.maateen.me/bangla/font.css');
-
   :root {
-    --primary-heading: 25px; /* Example primary size */
+    --primary-heading: 20px; /* Example primary size */
     --primary-font-wight: 600; /* Example primary color */
     --primary-lineHieght: 30px; /* Example secondary color */
     --secondary-heading: 20px; /* Example secondary color */
@@ -556,9 +555,10 @@ a,h1,h2,h3,h4,h5,h6,p,span{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bangla', Arial, sans-serif !important;
     scroll-behavior: smooth;
     list-style: none;
+    font-family: 'SolaimanLipi', sans-serif;
+
     text-decoration: none;
 }
 a{
@@ -574,10 +574,7 @@ a:hover{
     border-top: 4px solid #8c8787;
     margin-top: 50px;
 }
-h1,h2,h3,h4,h5,h6,a,li,span,p,option{
-    font-family: 'Bangla', Arial, sans-serif !important;
 
-}
 span{
    font-size: small;
    padding: 0px 5px 0px 5px;

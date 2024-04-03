@@ -130,7 +130,7 @@
                     <Link href="/">
 
 
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEVcofjrYj9XQJchDG30jIk45kVjbPpNZ2Z2fwYa1lxA&s"
+                    <img :src="'/' + $page.props.logo.logo"
                         width="50%" style="" alt="">
                     </Link>
                 </div>
@@ -139,13 +139,14 @@
 
                 <div v-for="featured in $page.props.feturedNews" :key="featured.id"
                     class="col-3 d-flex justify-content-center align-items-center">
-                    <Link :href="`/news/get-news-by-title/${featured.id}`" class="text-decoration-none">
+                    <!-- <Link :href="`/news/get-news-by-title/${featured.id}`" class="text-decoration-none"> -->
+                    <Link :href="route('newsByTitle', { news: featured.id })" class="text-decoration-none">
                     <div class="row no-gutters">
                         <div class="col-8 d-flex align-items-center">
                             <h4 class="titleHead5">{{ featured . title }}</h4>
                         </div>
                         <div class="col-4">
-                            <img :src="featured.image" width="80%" class="img-fluid" alt="Responsive image">
+                            <img :src="'/' + featured.image" width="80%" class="img-fluid" alt="Responsive image">
                         </div>
                     </div>
                     </Link>

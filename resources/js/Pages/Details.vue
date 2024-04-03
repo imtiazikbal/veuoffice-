@@ -1,159 +1,234 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
-import NavBar from '../Components/Header/Navbar.vue';
+    import {
+        Head,
+        Link
+    } from '@inertiajs/vue3';
+    import NavBar from '../Components/Header/Navbar.vue';
 
-defineProps({
-    news: Object
-})
+    defineProps({
+        news: Object,
+        relatedNews: Object
+    })
 </script>
 
 
 <template>
-    <NavBar/>
-	<!-- Breadcrumb Breadcrumb -->
-		<section class="bg-light">
-			<div class="container p-0">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb bg-light pb-1 pt-2 ">
-						<li class="breadcrumb-item"><a href=""><i class="fas fa-home text-dark"> </i></a></li>
-					
-						<li class="breadcrumb-item active" aria-current="page">{{ news.category.cName }}</li>
+    <NavBar />
+    <!-- Breadcrumb Breadcrumb -->
+    <!-- <section class="bg-light">
+        <div class="container p-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-light pb-1 pt-2 ">
+                    <li class="breadcrumb-item"><a href=""><i class="fas fa-home text-dark"> </i></a></li>
 
-						
-					</ol>
-				</nav>
-			</div>
-		</section>
-	
-	
-<!-- Details aria Start -->
-	<section class="">
-		<div class="container">
-			<div class="row">
-                <div class="col-md-2" style="margin-top:20px;">
-					<Link href="https://www.google.com/search?q=digitalsolutions.ltd&ei=LvqAY6OaOrTf4-EPmJuU6A0&ved=0ahUKEwij6fvL7Mn7AhW07zgGHZgNBd0Q4dUDCA4&uact=5&oq=digitalsolutions.ltd" target="_blank">
-			          	<img src="" class="img-fluid animated fadeInUp" width="100%" alt="Digital Solutions Ltd">
-			        </Link>
-				</div>
-				<!--News Details aria-->
-				<div class="col-md-7 col-12">
-					<div class="row">
-						<div class="col">
-							<span class="sharethis-inline-share-buttons hidden"></span>
-							<h2 class="newsTitle">{{ news.title }}</h2>
-							<div class="row">
-								<div class="col">
-									<h6 class="pb-1" style="color: #999999;"> 
-										<span class="font-weight-bold"> Publish : {{ news.created_at }} </span>.
-									</h6>
-									<img :src="'/' + news.image" class="card-img-top rounded-0" 
-										title="news title" alt="">
-									<p class="text-center font-italic pt-2" style="color: #666;">{{ news.nCaption }}</p>
-								</div>
-							</div>
-							<div class="row">
-								
-								<div class="col-12 og:description detailsStyle">
-                                    <p v-html="news.nBody"></p>
-									<h5 class="py-3 text-muted"> 
-										<span>
-											<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
-											</svg>
-										</span>
-									</h5>
-                                    
+                    <li class="breadcrumb-item active" aria-current="page"></li>
 
-								<!-- body -->
-									<div class="py-3 sharethis-inline-share-buttons"></div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div>
-				</div>
-				
-		
-		    <!-- @include('fontend.component.popular') -->
-	</section>
-		
 
-	
+                </ol>
+            </nav>
+        </div>
+    </section> -->
+
+
+    <!-- Details aria Start -->
+
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="catInfo bb">
+                        <h2 class="py-1"><span>{{ news . category . cName }}</span></h2>
+                        <h2 class="py-2">{{ news . title }}</h2>
+                        <h3 class="py-3"><span>বিনোদন প্রতিবেদক</span></h3>
+                        <div class="newsPostAndShre d-flex justify-content-between">
+                            <div>
+                                <h2><span>প্রকাশ:{{ news . created_at }}</span></h2>
+
+                            </div>
+                            <div class="ShareButton d-flex">
+                                <li><a href="">Facebook</a></li>
+                                <li><a href="">Twitter</a></li>
+                                <li><a href="">Font plus</a></li>
+                                <li><a href="">Font Minus</a></li>
+                                <li><a href="">Print</a></li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="newsDetails py-5 d-flex flex-column justify-content-center align-items-center ">
+                        <img :src="'/' + news.image" width="50%" alt="responsive image">
+                        <h3 class="bb mt-1">{{ news . nCaption }}<span>
+                            </span></h3>
+
+                        <h2 class="py-3" v-html="news.nBody"></h2>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center position-sticky top-0">
+                    <div class="detailsSideBar">
+                        <div class="detailsAdd1">
+                            <img src="https://tpc.googlesyndication.com/simgad/18288574991889935630" alt="">
+                        </div>
+                        <div class="detailsAdd2 pt-3">
+                            <img src="https://tpc.googlesyndication.com/simgad/18288574991889935630" alt="">
+                        </div>
+                    </div>
+
+
+
+                    <Link class="relatedNew pt-3" v-for="news1 in relatedNews.news" :key="news1.id"
+                        :href="route('newsByTitle', { news: news1.id })">
+
+                    <h2>{{ news1 . title }}</h2>
+                    <div class="relDesPic d-flex justify-content-between py-1">
+                        <h2 v-html="news1.nBody.substr(0, 50)">
+                        </h2>
+
+                        <img :src="'/' + news1.image" alt="" width="30%">
+
+                    </div>
+                    </Link>
+                    <div class="detailsSideBar py-2">
+                        <div class="detailsAdd1">
+                            <img src="https://tpc.googlesyndication.com/simgad/18288574991889935630" alt="">
+                        </div>
+                        
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+        <!-- @include('fontend.component.popular') -->
+
+
+
+
 </template>
 
 <style>
-@import url('https://fonts.maateen.me/solaiman-lipi/font.css');
-a,h1,h2,h3,h4,h5,h6,p,span,li{
-    font-family: 'SolaimanLipi', sans-serif !important;
-}h2.newsTitle {
-    font-size: 30px;
-}
-		.cstomWidth {
-			width: 80%;
-		}
+    a {
+        text-decoration: none;
+        color: black;
+    }
 
+    a:hover {
 
-		h2 {
-			font-weight: bold;
-			padding: 15px 0;
+        color: blue;
+    }
 
-		} @media (max-width: 768px) {
-			h2 { 
-				font-size: 24px;
-				padding: 10px 0;
-			 } 
-		}
-		
-		.detailsStyle p {
-			color: #444; 
-			text-align: justify;
-			font-size: 20px;
-			line-height: 1.5;
-			margin-bottom: 18px;
-		}  @media (max-width: 768px) {
-			.detailsStyle p { 
-				font-size: 20px;
-			}
-		}
-		
-		.detailsStyle h5 {
-			font-size: 22px;
-			color: #333;
-			font-weight: bold;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    li,
+    span,
+    p,
+    option {
 
-		}
+        padding: 0px;
+        margin: 0px;
+    }
 
-		.topboxstyle a {
-			text-decoration: none;
-		}
-		.topboxstyle a:hover {
-			background-color: #9bcde2;
-		}
-		.topboxstyle p {
-			font-size: 16px;
-			background-color: #fff;
-			padding: 5px 5px;
-			height: 55px;
-			overflow: hidden;
-			line-height: 1.3em;
-			text-decoration: none;
-		}
-		
+    span {
+        font-size: small;
+        padding: 0px 5px 0px 5px;
+    }
 
-		.tagbtnstyle2Modify a {
-			font-size: 16px!important;
-			margin-left: 5px;
-		}
+    .br {
+        border-right: var(--border-right);
+        padding-right: var(--padding-right);
+    }
 
-		.share-this-cstmstyle {
-			margin-top: -33px;
-			opacity: 100%;
-		}
-		.share-this-cstmstyle:hover {
-			opacity: 30%;
-		}
-        p {
-										padding: 0px 20px 0px 0px;
-									}
-	</style>
+    .bb {
+        border-bottom: var(--border-right);
+        padding-bottom: var(--padding-right);
+    }
+
+    .Cpr {
+        padding-right: var(--padding-right);
+    }
+
+    .Cpb {
+        padding-bottom: 20px;
+    }
+
+    .pr {
+        padding-right: var(--padding-right);
+    }
+
+    .cbb {
+        border-bottom: 2px solid black;
+    }
+
+    .catInfo h2 span {
+        color: var(--primary-color);
+        font-weight: var(--primary-font-wight);
+        font-size: 16px;
+    }
+
+    .catInfo h2 {
+        color: var(--primary-color);
+        font-weight: var(--primary-font-wight);
+        font-size: 42px;
+    }
+
+    .catInfo h3 span {
+        color: var(--secondary-color);
+        font-weight: var(--primary-font-wight);
+        font-size: var(--secondary-heading);
+    }
+
+    .newsPostAndShre h2 span {
+        color: var(--secondary-color);
+        font-size: 16px;
+    }
+
+    .newsDetails h3 span {
+        font-size: var(--primary-newsCaption);
+    }
+
+    .newsDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .newsDetails h2 {
+        font-size: var(--primary-newsDetailsheading);
+        line-height: 1.7;
+        white-space: space;
+
+    }
+
+    .detailsSideBar {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .relatedNew {
+        width: 300px;
+        /* height: 250px; */
+    }
+
+    .relatedNew h2 {
+        font-weight: var(--primary-font-wight);
+
+    }
+
+    .relDesPic h2 {
+        font-weight: var(--secondary-color);
+
+    }
+</style>
