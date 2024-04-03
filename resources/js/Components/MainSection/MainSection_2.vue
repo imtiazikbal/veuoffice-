@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="col-6 cbr-2" v-for="news in newsSkip1Take2" :key="news.id">
+    <div class="col-6 cbr-2 mainsection2" v-for="news in newsSkip1Take2" :key="news.id">
         <Link :href="route('newsByTitle', { news: news.id })" class="main_section1_image mr-3 d-block">
 
         <div class="main_section1_content_image_title d-flex justify-content-space-between">
@@ -31,6 +31,7 @@ defineProps({
 </template>
 
 <style scoped>
+
     .main_section1_content_image_title img {
         width: 100px;
         height: 100px;

@@ -5,7 +5,9 @@
     import {
         Link
     } from '@inertiajs/vue3'
-    import { reactive } from 'vue'
+    import {
+        reactive
+    } from 'vue'
     // Search Bar
     const isSearchFormVisible = ref(false)
     const toggleSearchFormVisibility = () => {
@@ -18,9 +20,7 @@
         MenuBar.value = !MenuBar.value;
     }
 
-// login form Bar
-
-
+    // login form Bar
 </script>
 <template>
 
@@ -96,114 +96,57 @@
 
 
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Navbar start -->
 
     <div class="d-sm-none navbar navbar-light shadow-sm sticky-top"
         style="background:#eee; box-shadow: 0 .2rem .2rem rgba(0,0,0,.15) !important; padding-bottom: 0rem;">
         <a class="navbar-brand" href="">
-            <img src="" width="140" class="image-fluid py-1" style="" alt="">
+            <Link href="/">
+            <img :src="'/' + $page.props.logo.logo" width="140px" style="" alt="">
+            </Link>
         </a>
         <button class="navbar-toggler navbar-light border-0 mt-1 p-0" type="button" data-toggle="collapse"
             data-trigger="#navbar_main" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="font-size:26px; padding:0px!important;"></span>
         </button>
     </div>
+
     <div style="background:#fff;">
         <div class="container d-none d-sm-block">
             <div class="row d-flex justify-content-between py-3" style="color: #ddd;">
-                <div class="col-3 d-flex align-items-center">
+                <div class="col-2 d-flex align-items-center">
                     <Link href="/">
-
-
-                    <img :src="'/' + $page.props.logo.logo"
-                        width="50%" style="" alt="">
+                    <img :src="'/' + $page.props.logo.logo" width="100%" style="" alt="">
                     </Link>
                 </div>
 
 
 
-                <div v-for="featured in $page.props.feturedNews" :key="featured.id"
-                    class="col-3 d-flex justify-content-center align-items-center">
-                    <!-- <Link :href="`/news/get-news-by-title/${featured.id}`" class="text-decoration-none"> -->
-                    <Link :href="route('newsByTitle', { news: featured.id })" class="text-decoration-none">
+                <div class="col-10 d-flex justify-content-center align-items-center">
+                    <Link class="text-decoration-none">
                     <div class="row no-gutters">
-                        <div class="col-8 d-flex align-items-center">
-                            <h4 class="titleHead5">{{ featured . title }}</h4>
-                        </div>
-                        <div class="col-4">
-                            <img :src="'/' + featured.image" width="80%" class="img-fluid" alt="Responsive image">
-                        </div>
+                        <img src="https://tpc.googlesyndication.com/simgad/1409315922313000973" alt="">
                     </div>
                     </Link>
                 </div>
-
-
-
             </div>
         </div>
     </div>
+
     <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light sticky-top py-1 px-md-0"
         style="background: #fff !important; text-align: center!important; border-top: 1px solid #ddd; border-bottom: 2px solid #bbb5b5;">
-        <div class="container">
-            <div class="offcanvas-header mt-2">
-                <div class="row">
-                    <div class="col-12 d-md-none float-right">
-                        <a href="">
-                            <button class="navbar-toggler border-0">
-                                <img src="https://www.kalbela.com/assets/news_photos/2024/03/17/image_73824_1710673387.webp"
-                                    alt="Responsive image">
-
-
-                            </button>
-                        </a>
-                        <div class="text-right float-right">
-                            <button class="btn btn-danger btn-close float-right text-right"
-                                style="margin-top:20px; padding:4px 14px;">&times</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="container d-flex justify-content-center">
             <ul id="style1stNav" class="navbar-nav">
                 <li class="nav-item style1stNav">
                     <a class="nav-link pl-0" href="#">সর্বশেষ</a>
                 </li>
-
                 <!-- Input Cat page start -->
-
-
                 <li class="nav-item style1stNav" v-for="category in $page.props.headerData" :key="category.id">
-                    <Link class="nav-link" :href="`/admin/get-news-by-category/${category.id }`"> {{ category . cName }}</Link>
-                </li>
-
-
-                <!-- Input Cat page End -->
-
-                <li class="nav-item style1stNav">
-                    <a class="nav-link" href="#">ছবিঘর</a>
-                </li>
-
-                <li class="nav-item style1stNav">
-                    <a class="nav-link" href="#">ভিডিও</a>
-                </li>
-
+                    <Link class="nav-link" :href="`/admin/get-news-by-category/${category.id }`">
+                    {{ category . cName }}</Link>
+                </li> 
             </ul>
-            <ul id="" class="navbar-nav ml-auto">
+            <!-- <ul id="" class="navbar-nav ml-auto">
 
                 <li class="nav-item style2ndNav">
                     <a @click="toggleSearchFormVisibility" class="nav-link"> <svg xmlns="http://www.w3.org/2000/svg"
@@ -214,15 +157,7 @@
                         </svg> খুজুন </a>
                 </li>
 
-                <li class="nav-item style2ndNav">
-                    <Link href="/login" class="nav-link" > <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                            height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
-                            <path fill-rule="evenodd"
-                                d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
-                        </svg> LogIn</Link>
-                </li>
+              
 
                 <li class="nav-item style2ndNav">
 
@@ -235,7 +170,7 @@
                     </button>
 
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </nav>
 
