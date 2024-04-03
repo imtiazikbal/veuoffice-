@@ -1,4 +1,7 @@
 <script setup>
+defineProps({
+    bangladeshCategoryNews: Object
+})
 </script>
 <template> <div class="col-12 py-3 cbt">
     <div class="headNews d-flex">

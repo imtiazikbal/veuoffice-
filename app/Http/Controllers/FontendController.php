@@ -67,9 +67,11 @@ class FontendController extends Controller
         //Rajniti Category News
         $newsOfRajnitiCategory = News::where('category_id',1)->with('category', 'division', 'district')->first();
 
+        $newsOfBangladeshCategory = News::where('category_id',17)->with('category', 'division', 'district')->latest()->skip(1)->take(3)->get();
+
      
-        return Inertia::render('Home', ['date' => $date, 'news' => $newsContent, 'newsSkip1Take2' => $newsSkip1Take2, 'featured' => $featured, 'newsSkip3Take3' => $newsSkip3Take3, 'rajnitiCategoryNews' => $newsOfRajnitiCategory]);
-     // return $newsOfRajnitiCategory;
+        return Inertia::render('Home', ['date' => $date, 'news' => $newsContent, 'newsSkip1Take2' => $newsSkip1Take2, 'featured' => $featured, 'newsSkip3Take3' => $newsSkip3Take3, 'rajnitiCategoryNews' => $newsOfRajnitiCategory, 'bangladeshCategoryNews' => $newsOfBangladeshCategory ]);
+     // return $newsOfBangladeshCategory;
     }
 
     function getNewsByCategory(Request $request, Category $category)

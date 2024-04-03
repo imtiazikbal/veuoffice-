@@ -20,7 +20,8 @@ defineProps({
     newsSkip1Take2: Object,
     newsSkip1Take2: Object,
     newsSkip3Take3: Object,
-    rajnitiCategoryNews: Object
+    rajnitiCategoryNews: Object,
+    bangladeshCategoryNews: Object
 
 })
 </script>
@@ -52,7 +53,7 @@ defineProps({
     <div class="row">
         </div>
             <LeftSideBar_1 :news = "rajnitiCategoryNews"/>
-            <LeftSideBar_2/>
+            <LeftSideBar_2 :bangladeshCategoryNews = "bangladeshCategoryNews"/>
             <LeftSideBar_2/>
             <LeftSideBar_2/>
             <LeftSideBar_2/>       

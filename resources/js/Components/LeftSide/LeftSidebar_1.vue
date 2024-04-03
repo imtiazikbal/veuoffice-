@@ -11,15 +11,19 @@ defineProps({
                     <Link  :href="route('newsByTitle', { news: news.id })" class="col-12">
                         <div class="headNews d-flex">
                          <h2>{{ news.title }}</h2>
-                            <img src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2Fd927cfb6-71aa-41a1-afc6-b9e55cb709c9%2FO_kader.jpg?rect=19%2C0%2C701%2C467&auto=format%2Ccompress&fmt=webp&format=webp&w=100&dpr=1.0" alt="">
+                            <img :src=" '/' + news.image" alt="responsive image" width="100px" height="67px">
                          </div>
-                             <div class="headNews_body">
-                                 <span>
-                                    ওবায়দুল কাদের। তিনি বলেন, ‘আমি বিষয়টি গণমাধ্যমে দেখেছি। এ সম্পর্কে আমার কিছু জানা ছিল না। এখন সাকিব আওয়ামী লীগের টিকিটে নির্বাচন করেছে, জয়লাভও করেছে।’
-                                     
-                                 </span>                    
+                             <div class="headNews_body mb-2">
+                                 <h2 v-html="news.nBody.substr(0, 100)">  
+                                 </h2>                    
                              </div>
                             </Link >
                
 </template>
 
+<style scoped>
+.headNews h2{
+    font-weight: 500;
+    font-size: 16px;
+}
+</style>
